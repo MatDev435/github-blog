@@ -32,5 +32,6 @@ export const PostContainer = styled.div`
 
   p {
     color: ${(props) => props.theme['base-text']};
+    margin-top: 1.25rem;
   }
 `

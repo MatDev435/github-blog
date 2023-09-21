@@ -19,8 +19,6 @@ interface UserInfoProps {
 }
 
 export function Profile(props: UserInfoProps) {
-  const githubUrl = `https://github.com/${props.user.login}`
-
   return (
     <ProfileContainer>
       <Avatar src={props.user.avatar_url} alt="" />
@@ -29,7 +27,7 @@ export function Profile(props: UserInfoProps) {
         <UsernameContainer>
           <h1>{props.user.name}</h1>
 
-          <a href={githubUrl}>
+          <a href={props.user.html_url}>
             GITHUB
             <ArrowSquareUpRight size={12} />
           </a>

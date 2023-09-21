@@ -11,10 +11,19 @@ export interface UserInfoType {
   name: string
   company: string | null
   followers: number
+  html_url: string
+}
+
+export interface PostType {
+  title: string
+  body: string
+  number: number
+  created_at: string
 }
 
 export function Home() {
   const [userInfo, setUserInfo] = useState({} as UserInfoType)
+  const [posts, setPosts] = useState<PostType[]>([])
 
   useEffect(() => {
     async function fetchUserData() {
@@ -23,7 +32,16 @@ export function Home() {
       setUserInfo(data)
     }
 
+    async function fetchPosts() {
+      const { data } = await api.get(
+        '/search/issues?q=repo:github-blog user:MatDev435',
+      )
+
+      setPosts(data.items)
+    }
+
     fetchUserData()
+    fetchPosts()
   }, [])
 
   return (
@@ -37,8 +55,9 @@ export function Home() {
       </SearchForm>
 
       <PostsContainer>
-        <Post />
-        <Post />
+        {posts.map((post) => {
+          return <Post key={post.number} post={post} />
+        })}
       </PostsContainer>
     </HomeContainer>
   )

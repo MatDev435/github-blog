@@ -35,4 +35,5 @@ export const PostsContainer = styled.div`
   display: grid;
   grid-template-columns: 50% 50%;
   grid-gap: 2rem;
+  margin-top: 3rem;
 `
