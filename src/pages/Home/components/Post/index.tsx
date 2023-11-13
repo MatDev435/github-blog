@@ -9,8 +9,10 @@ interface PostProps {
 export function Post(props: PostProps) {
   const postBody = props.post.body.substring(0, 400).concat('...')
 
+  const postUrl = `/post/${props.post.number}`
+
   return (
-    <NavLink to="/post/1">
+    <NavLink to={postUrl}>
       <PostContainer>
         <div>
           <h1>{props.post.title}</h1>

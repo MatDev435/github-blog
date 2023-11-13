@@ -1,4 +1,5 @@
 import { UserInfoType } from '../..'
+import { Link } from '../../../../components/Link'
 import {
   Avatar,
   ProfileContainer,
@@ -27,10 +28,7 @@ export function Profile(props: UserInfoProps) {
         <UsernameContainer>
           <h1>{props.user.name}</h1>
 
-          <a href={props.user.html_url}>
-            GITHUB
-            <ArrowSquareUpRight size={12} />
-          </a>
+          <Link url={props.user.html_url} text="GITHUB" />
         </UsernameContainer>
 
         <p>{props.user.bio}</p>

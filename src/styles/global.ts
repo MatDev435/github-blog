@@ -9,6 +9,7 @@ export const GlobalStyles = createGlobalStyle`
 
     body {
         background: ${(props) => props.theme['base-background']};
+        overflow-x: hidden;
     }
     
     body, input, textarea, button {
