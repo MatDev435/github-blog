@@ -2,16 +2,27 @@ import { NavLink } from 'react-router-dom'
 import { PostControls, PostInfoContainer, PostStatistics } from './styles'
 import { ArrowLeft, Calendar, GithubLogo, ChatTeardrop } from 'phosphor-react'
 import { Link } from '../../../../components/Link'
+import ptBR from 'date-fns/locale/pt-BR'
+import { formatDistanceToNow } from 'date-fns'
 
 interface PostInfoProps {
   title: string
   owner: string
-  createdAt: string
+  createdAt: Date
   commentsNumber: number
   issueUrl: string
 }
 
 export function PostInfo(props: PostInfoProps) {
+  let formatedDate = ''
+
+  if (props.createdAt) {
+    formatedDate = formatDistanceToNow(new Date(props.createdAt), {
+      addSuffix: true,
+      locale: ptBR,
+    })
+  }
+
   return (
     <PostInfoContainer>
       <PostControls>
@@ -33,7 +44,7 @@ export function PostInfo(props: PostInfoProps) {
 
         <div>
           <Calendar size={18} />
-          <p>{props.createdAt}</p>
+          <p>{formatedDate}</p>
         </div>
 
         <div>
